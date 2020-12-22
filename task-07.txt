@@ -1,0 +1,5 @@
+Horns_and_hoofs JSC 100 200
+Hoofs_and_horns OJSC 300 200
+Hoofs LTD 500 0
+Horns JSC 200 1000
+Tails IE 300 100

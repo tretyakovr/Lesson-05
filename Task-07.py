@@ -20,3 +20,26 @@
 #
 # [{"firm_1": 5000, "firm_2": 3000, "firm_3": 1000}, {"average_profit": 2000}]
 # Подсказка: использовать менеджеры контекста.
+
+
+import json
+
+with open('task-07.txt', 'r') as firm_data:
+    firm_lst = [{}, {}]
+    total_profit = 0
+    profit_count = 0
+    for i in firm_data:
+        firm_detail = i.strip().split(' ')
+        profit = int(firm_detail[2]) - int(firm_detail[3])
+        firm_lst[0][firm_detail[0] + ', ' + firm_detail[1]] = profit
+
+        if profit > 0:
+            total_profit += profit
+            profit_count += 1
+
+    firm_lst[1]['average_profit'] = total_profit / profit_count
+
+print(firm_lst)
+
+with open('task-07.json', 'w', encoding = 'UTF-8') as json_output:
+    json.dump(firm_lst, json_output, indent = 4)

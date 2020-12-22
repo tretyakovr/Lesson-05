@@ -42,6 +42,7 @@ with open('task-06.txt', 'r') as course:
         count_str = subj[1].split(' ')
         count_int = [get_num_from_str(j) for j in count_str]
 
+        # Суммируем количество занятий
         subj_count = 0
         for i in count_int:
             subj_count += i
