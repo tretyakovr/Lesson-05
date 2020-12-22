@@ -14,3 +14,38 @@
 # Пример словаря:
 #
 # {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
+
+def get_num_from_str(str_with_num):
+
+    # С регулярными выражениями пока не знаком, поэтому разбираю строку посимвольно
+    lst = list(str_with_num)
+    ret_val = [i for i in lst if i.isdigit()]
+
+    # Попытка преобразовать список цифр в число
+    try:
+        ret_val = int(''.join(ret_val))
+    except:
+        ret_val = 0
+
+    return ret_val
+
+
+with open('task-06.txt', 'r') as course:
+
+    course_dict = {}
+    for i in course:
+        print(i.strip())
+        # Делим строку на название предмета и количество занятий
+        subj = i.strip().split(': ')
+
+        # Разбиваем строку с количеством занятий в список для дальнейшей обработки
+        count_str = subj[1].split(' ')
+        count_int = [get_num_from_str(j) for j in count_str]
+
+        subj_count = 0
+        for i in count_int:
+            subj_count += i
+
+        course_dict[subj[0]] = subj_count
+
+print('\n', course_dict)
